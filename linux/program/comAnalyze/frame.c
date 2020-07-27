@@ -1,5 +1,7 @@
 #include "crc16.h"
 #include "frame.h"
+#include "stdio.h"
+#include "string.h"
 
 
 /*
@@ -30,9 +32,30 @@ static comFcb s_Fcb;
 
 void registCb(comFcb pFcb)
 {
-s_Fcb = pFcb;
+    s_Fcb = pFcb;
 }
 
+static unsigned char cmd_send_buf[130];
+void make_frame(unsigned char code, unsigned char *pData, int size, unsigned char *pOutData, int *pNum)
+{
+    unsigned short Crc;
+
+    memset(cmd_send_buf,0,sizeof(cmd_send_buf));
+
+    cmd_send_buf[0] = 0xAA;
+    cmd_send_buf[1] = 0x55;
+    memcpy(cmd_send_buf + 2,pData,size);
+
+    CRC16(cmd_send_buf,size + 2,&Crc);
+
+    cmd_send_buf[128] = Crc >> 8;
+    cmd_send_buf[129] = Crc >> 8;
+
+    pOutData = cmd_send_buf;
+    *pNum = 130;
+
+
+}
 
 void cmd_handle(unsigned short data)
 {

@@ -38,7 +38,7 @@ class benCom
 	
 	u_int32_t getTermBaudBitmap(u_int32_t baud);
 	int connect(const char * port_path, u_int32_t baudrate);
-	int  sendData(const unsigned char * data, size_t size);
+    int  sendData(const unsigned char * data, size_t size);
 	int getData(unsigned char * data, size_t size);
 	benCom();
 	
