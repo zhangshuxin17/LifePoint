@@ -1,4 +1,6 @@
-#include "ros/ros.h"
+#ifndef BEN_COM__
+#define BEN_COM__
+
 #include <vector>
 #include <iostream>
 #include <string>
@@ -46,3 +48,5 @@ class benCom
 	
 	
 };
+
+#endif
