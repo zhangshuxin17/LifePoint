@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(Analyze)
 
-add_compile_options(-std=c++11)
+#add_compile_options(-std=c++11)
 
 
 
