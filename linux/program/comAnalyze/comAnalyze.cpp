@@ -16,12 +16,12 @@ int Analyze::init(char * pComDevice,int comBaud,Fcb pFcb )
 }
 
 
-int Analyze::sendFrame(unsigned char code,unsigned char * pData, int size)
+int Analyze::sendFrame(unsigned char * pData, int size)
 {
-    unsigned char * pOut = NULL;
+    unsigned char pOut[130];
     int num;
 
-    make_frame(code,pData,size,pOut,&num);
+    make_frame(pData,size,pOut,&num);
 
     return com_.sendData(pOut,num);
 }

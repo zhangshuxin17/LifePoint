@@ -36,7 +36,7 @@ void registCb(comFcb pFcb)
 }
 
 static unsigned char cmd_send_buf[130];
-void make_frame(unsigned char code, unsigned char *pData, int size, unsigned char *pOutData, int *pNum)
+void make_frame(unsigned char *pData, int size, unsigned char *pOutData, int *pNum)
 {
     unsigned short Crc;
 
@@ -51,7 +51,8 @@ void make_frame(unsigned char code, unsigned char *pData, int size, unsigned cha
     cmd_send_buf[128] = Crc >> 8;
     cmd_send_buf[129] = Crc >> 8;
 
-    pOutData = cmd_send_buf;
+   memcpy(pOutData,cmd_send_buf,130);
+
     *pNum = 130;
 
 
