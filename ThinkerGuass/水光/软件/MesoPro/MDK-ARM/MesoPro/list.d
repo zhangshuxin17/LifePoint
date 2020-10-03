@@ -1,0 +1,12 @@
+mesopro\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+mesopro\list.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+mesopro\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+mesopro\list.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+mesopro\list.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+mesopro\list.o: ../Inc/FreeRTOSConfig.h
+mesopro\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+mesopro\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+mesopro\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+mesopro\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/portmacro.h
+mesopro\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+mesopro\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
