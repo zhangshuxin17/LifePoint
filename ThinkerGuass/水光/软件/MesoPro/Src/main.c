@@ -82,6 +82,14 @@ osMutexId_t myMutex01Handle;
 const osMutexAttr_t myMutex01_attributes = {
   .name = "myMutex01"
 };
+
+/* Definitions for myBinarySem01 */
+osSemaphoreId_t myBinarySem01Handle;
+const osSemaphoreAttr_t myBinarySem01_attributes = {
+  .name = "myBinarySem01"
+};
+
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -161,6 +169,10 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
+	
+	  myBinarySem01Handle = osSemaphoreNew(1, 0, &myBinarySem01_attributes);
+		
+		
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* Create the timer(s) */
@@ -722,6 +734,8 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
+		interface_task();
+		
     osDelay(1);
   }
   /* USER CODE END 5 */ 

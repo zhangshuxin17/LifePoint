@@ -11,5 +11,5 @@ void goRun(int type);
 
 void goBack(void);
 
-
+void goRunFast(void);
 
