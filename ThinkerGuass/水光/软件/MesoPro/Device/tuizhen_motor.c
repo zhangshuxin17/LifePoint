@@ -17,9 +17,9 @@ void TIM3_set_para(int frec , int plus)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 7200 - 1;
+  htim3.Init.Prescaler = 7200 ;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 10000 / frec;
+  htim3.Init.Period = (10000 - 1) / frec;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
