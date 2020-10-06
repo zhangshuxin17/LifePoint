@@ -18,6 +18,8 @@ void goRun(int type)
    
   }
 	
+	HAL_TIM_PWM_Start(&htim5,TIM_CHANNEL_2);
+	
 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_SET);
 	
 

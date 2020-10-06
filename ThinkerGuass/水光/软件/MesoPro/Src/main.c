@@ -513,7 +513,7 @@ static void MX_TIM5_Init(void)
   //10K HZ
   /* USER CODE END TIM5_Init 1 */
   htim5.Instance = TIM5;
-  htim5.Init.Prescaler = 1;
+  htim5.Init.Prescaler = 0;
   htim5.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim5.Init.Period = 36000;
   htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -577,9 +577,9 @@ static void MX_TIM8_Init(void)
 // 50 HZ
   /* USER CODE END TIM8_Init 1 */
   htim8.Instance = TIM8;
-  htim8.Init.Prescaler = 144 - 1;
+  htim8.Init.Prescaler = 0;
   htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim8.Init.Period = 10000;
+  htim8.Init.Period = 72;
   htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim8.Init.RepetitionCounter = 0;
   htim8.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -603,7 +603,7 @@ static void MX_TIM8_Init(void)
     Error_Handler();
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
+  sConfigOC.Pulse = 36;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
@@ -636,6 +636,12 @@ static void MX_TIM8_Init(void)
 
   /* USER CODE END TIM8_Init 2 */
   HAL_TIM_MspPostInit(&htim8);
+	
+		HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_1);
+		HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_2);
+		HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_3);
+	
+	while(1);
 
 }
 
@@ -732,6 +738,9 @@ void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
+	
+	goRun(0);
+	
   for(;;)
   {
 		interface_task();
