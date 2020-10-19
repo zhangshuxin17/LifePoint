@@ -3,7 +3,7 @@ extern "C" {
 
 #endif
 
-typedef void (*comFcb)(unsigned char * pData, int *pSize);
+typedef void (*comFcb)(unsigned char * pData, int Size);
 
 
 void registCb(comFcb pFcb);
