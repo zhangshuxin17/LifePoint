@@ -4,14 +4,15 @@
 #include <cstring>
 #include <vector>
 
-Fcb pFcb ;
+
+
 
 int main(int arg , char *argv[])
 {
 
 	Analyze  analyze;
 
-    analyze.init("/dev/ttyUSB0",115200,pFcb);
+    analyze.init("/dev/ttyUSB0",115200);
 
 
     while(1)
