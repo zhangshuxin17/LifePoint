@@ -7,6 +7,34 @@
 #include <cstring>
 #include <vector>
 
+
+typedef struct MesoDataToDownType_{
+unsigned char RfDegree;
+unsigned char Hz;
+unsigned char InjectType;
+unsigned char OpMode;
+unsigned char TouchDegree;
+unsigned char luqudSpeed;
+unsigned char IsStart;
+}MesoDataToDownType;
+
+
+
+
+typedef struct MesoDataToUpType_{
+unsigned char RfDegree;
+unsigned char Hz;
+unsigned char InjectType;
+unsigned char OpMode;
+unsigned char TouchDegree;
+unsigned char luqudSpeed;
+unsigned char IsStart;
+unsigned char ErrorCode;
+unsigned char iProcess;
+}MesoDataToUpType;
+
+
+
 class MesoDevice
 {
 public:
@@ -22,6 +50,7 @@ public:
     int getSystemState();
 
     Analyze Analyze_;
+    MesoDataToDownType mesoDataToDownType_;
 };
 
 #endif // MESODEVICE_H
