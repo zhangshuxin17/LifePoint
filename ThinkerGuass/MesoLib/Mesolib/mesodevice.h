@@ -1,6 +1,11 @@
 #ifndef MESODEVICE_H
 #define MESODEVICE_H
 
+#include "comAnalyze.h"
+#include <string.h>
+#include "stdio.h"
+#include <cstring>
+#include <vector>
 
 class MesoDevice
 {
@@ -16,6 +21,7 @@ public:
     void stop();
     int getSystemState();
 
+    Analyze Analyze_;
 };
 
 #endif // MESODEVICE_H

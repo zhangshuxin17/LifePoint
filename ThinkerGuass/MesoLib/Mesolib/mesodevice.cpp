@@ -1,14 +1,15 @@
 #include "mesodevice.h"
 
+
 MesoDevice::MesoDevice()
 {
-
+    Analyze_.init("/dev/ttyUSB0",115200);
 }
 
 
 void MesoDevice::setRF(int iDegree)
 {
-
+  //  Analyze_.sendFrame()
 }
 void MesoDevice::setHZ(int iDegree)
 {
