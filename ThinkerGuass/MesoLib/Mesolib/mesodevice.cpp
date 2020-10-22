@@ -62,6 +62,6 @@ void MesoDevice::stop()
 
 int MesoDevice::getSystemState()
 {
-
+         Analyze_.getFrame((unsigned char *)&mesoDataToDownType_);
         return 0;
 }
