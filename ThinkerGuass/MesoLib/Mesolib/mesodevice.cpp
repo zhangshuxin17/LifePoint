@@ -14,6 +14,8 @@ MesoDevice::MesoDevice()
     mesoDataToDownType_.RfDegree = 1;
     mesoDataToDownType_.TouchDegree = 1;
     mesoDataToDownType_.luqudSpeed = 1;
+
+    proccess_num = 0;
 }
 
 
@@ -62,6 +64,11 @@ void MesoDevice::stop()
 
 int MesoDevice::getSystemState()
 {
-         Analyze_.getFrame((unsigned char *)&mesoDataToDownType_);
-        return 0;
+    Analyze_.getFrame((unsigned char *)&mesoDataToDownType_);
+    proccess_num = mesoDataToUpType_.iProcess;
+    return mesoDataToUpType_.IsStart;
+}
+
+int MesoDevice::getProcess(){
+    return proccess_num;
 }
