@@ -21,7 +21,7 @@ void Analyze::defaultCallBack(unsigned char * pData, int Size)
 
 int Analyze::init(char * pComDevice,int comBaud,Fcb pFcb )
 {
-	com_.connect(pComDevice,comBaud);
+    com_.connect(pComDevice,comBaud);
 
 	registCb(pFcb);
 	

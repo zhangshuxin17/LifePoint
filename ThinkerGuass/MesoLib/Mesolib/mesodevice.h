@@ -1,7 +1,7 @@
 #ifndef MESODEVICE_H
 #define MESODEVICE_H
 
-#include "program/comAnalyze/comAnalyze.h"
+#include "comAnalyze.h"
 #include <string.h>
 #include "stdio.h"
 #include <cstring>
@@ -16,6 +16,7 @@ unsigned char OpMode;
 unsigned char TouchDegree;
 unsigned char luqudSpeed;
 unsigned char IsStart;
+unsigned char unused[123];
 }MesoDataToDownType;
 
 
@@ -31,6 +32,7 @@ unsigned char luqudSpeed;
 unsigned char IsStart;
 unsigned char ErrorCode;
 unsigned char iProcess;  // process
+unsigned char unused[121];
 }MesoDataToUpType;
 
 

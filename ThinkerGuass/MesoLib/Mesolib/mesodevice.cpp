@@ -5,7 +5,7 @@
 
 MesoDevice::MesoDevice()
 {
-    Analyze_.init("/dev/ttyUSB0",115200);
+    Analyze_.init("/dev/pts/2",115200);
 
     mesoDataToDownType_.Hz = 5;
     mesoDataToDownType_.InjectType = 1;
@@ -64,7 +64,7 @@ void MesoDevice::stop()
 
 int MesoDevice::getSystemState()
 {
-    Analyze_.getFrame((unsigned char *)&mesoDataToDownType_);
+    Analyze_.getFrame((unsigned char *)&mesoDataToUpType_);
     proccess_num = mesoDataToUpType_.iProcess;
     return mesoDataToUpType_.IsStart;
 }

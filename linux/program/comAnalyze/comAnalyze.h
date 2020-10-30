@@ -23,6 +23,6 @@ class  Analyze
 
     static void defaultCallBack(unsigned char * pData, int Size);
     Fcb pfcb_;
-	void runThread(void);
+    void runThread(void);
 	benCom com_;
 };

@@ -14,7 +14,8 @@ int main()
 {
      Analyze analyzeD;
 
-     analyzeD.init("/dev/ttyUSB0",115200);
+     analyzeD.init("/dev/pts/20",115200);
+
 
 
      thread task1([&]()
@@ -22,6 +23,11 @@ int main()
          while (true)
          {
                analyzeD.getFrame((unsigned char * )&mesoDataToDownType);
+               printf("RfDegree = %d     Hz = %d  injectType= %d \
+                        Opmode = %d  TouchDegree = %d     luquidSpeed = %d\
+                      isStart = %d \n",\
+                      mesoDataToDownType.RfDegree,mesoDataToDownType.Hz ,mesoDataToDownType.InjectType,
+                      mesoDataToDownType.OpMode,mesoDataToDownType.TouchDegree,mesoDataToDownType.luqudSpeed,mesoDataToDownType.IsStart);
          }
      });
 
@@ -39,14 +45,16 @@ int main()
 
          while (true)
          {
-            sleep(1);
+            usleep(1000*300);
 
             mesoDataToUpType.iProcess ++;
 
             if(mesoDataToUpType.iProcess > 100) mesoDataToUpType.iProcess = 0;
 
             analyzeD.sendFrame((unsigned char *)&mesoDataToUpType,sizeof(mesoDataToUpType));
+
          }
+
      });
 
     task1.join();

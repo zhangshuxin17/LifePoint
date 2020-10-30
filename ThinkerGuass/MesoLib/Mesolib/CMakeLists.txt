@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 2.8)
 
 project(Mesolib)
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++11 -xc++)
 find_package(Boost COMPONENTS system filesystem thread REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIR})
+
+
 
 set(benlib "/home/benzhang/LifePoint/linux/program/")
 

@@ -22,9 +22,11 @@ CMD_HEADER55 = 1, // 头部
 CMD_BODY
 };
 
+#define FRAME_SIZE 130
+
 static int cmd_state = CMD_HEADERAA;
 static int cmd_pos = 0;
-static unsigned char cmd_rec_buf[130];
+static unsigned char cmd_rec_buf[FRAME_SIZE + 20];
 
 
 static comFcb s_Fcb;
@@ -35,7 +37,7 @@ void registCb(comFcb pFcb)
     s_Fcb = pFcb;
 }
 
-static unsigned char cmd_send_buf[130];
+static unsigned char cmd_send_buf[FRAME_SIZE];
 void make_frame(unsigned char *pData, int size, unsigned char *pOutData, int *pNum)
 {
     unsigned short Crc;
@@ -46,14 +48,14 @@ void make_frame(unsigned char *pData, int size, unsigned char *pOutData, int *pN
     cmd_send_buf[1] = 0x55;
     memcpy(cmd_send_buf + 2,pData,size);
 
-    CRC16(cmd_send_buf,size + 2,&Crc);
+    CRC16(cmd_send_buf + 2,FRAME_SIZE - 4,&Crc);
 
-    cmd_send_buf[128] = Crc >> 8;
-    cmd_send_buf[129] = Crc >> 8;
+    cmd_send_buf[FRAME_SIZE - 2] = Crc &0xFF;
+    cmd_send_buf[FRAME_SIZE - 1] = Crc >> 8;
 
-   memcpy(pOutData,cmd_send_buf,130);
+   memcpy(pOutData,cmd_send_buf,FRAME_SIZE);
 
-    *pNum = 130;
+    *pNum = FRAME_SIZE;
 
 
 }
@@ -81,11 +83,15 @@ void cmd_handle(unsigned short data)
 	{
 			cmd_rec_buf[cmd_pos] = data;
 		  cmd_pos++;
-			if(cmd_pos >= 129){ // get now frame
+            if(cmd_pos >= (FRAME_SIZE - 2)){ // get now frame
 						// checkcrc
 			  unsigned short wCrc;
-			  CRC16(cmd_rec_buf,128,&wCrc);
-				s_Fcb(cmd_rec_buf,129);
+              unsigned short wRecvCrc = cmd_rec_buf[FRAME_SIZE - 2 -2 ] + cmd_rec_buf[FRAME_SIZE - 2 -1] * 256;
+              CRC16(cmd_rec_buf,FRAME_SIZE - 4,&wCrc);
+              if(wCrc == wRecvCrc)
+              {
+                s_Fcb(cmd_rec_buf,FRAME_SIZE - 4);
+              }
 				//osSemaphoreRelease(myBinarySem01Handle);
 				cmd_state = CMD_HEADERAA;
 			}
