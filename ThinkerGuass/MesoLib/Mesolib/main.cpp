@@ -8,8 +8,7 @@ using namespace std;
 
 int main()
 {
-    MesoDevice mesoDevice;
-
+ MesoDevice mesoDevice;
 
     thread task1([&]()
     {
@@ -41,6 +40,14 @@ int main()
                 mesoDevice.setInjectType(stoi(cmd.at(1).c_str()));
            }else if(cmd.at(0) == "speed"){
                 mesoDevice.setLiquidSpeed(stoi(cmd.at(1).c_str()));
+           }else if(cmd.at(0) == "replay"){
+                mesoDevice.replayHaocai();
+           }else if(cmd.at(0) == "forword"){
+                mesoDevice.replayHaocai();
+           }else if(cmd.at(0) == "back"){
+                mesoDevice.replayHaocai();
+           }else if(cmd.at(0) == "normal"){
+                mesoDevice.setNormalMode();
            }
 
         }

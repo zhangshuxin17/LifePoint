@@ -16,11 +16,13 @@ unsigned char OpMode;
 unsigned char TouchDegree;
 unsigned char luqudSpeed;
 unsigned char IsStart;
-unsigned char unused[123];
+unsigned char ManuMode;
+unsigned char OnceCmd; // 0: none  1: 更换耗材
+unsigned char unused[117];
 }MesoDataToDownType;
 
 
-
+// total 126
 
 typedef struct MesoDataToUpType_{
 unsigned char RfDegree;
@@ -32,7 +34,9 @@ unsigned char luqudSpeed;
 unsigned char IsStart;
 unsigned char ErrorCode;
 unsigned char iProcess;  // process
-unsigned char unused[121];
+unsigned char replaying;
+unsigned char version[16];
+unsigned char unused[100];
 }MesoDataToUpType;
 
 
@@ -45,8 +49,14 @@ public:
     void setHZ(int iDegree);  // frequency
     void setInjectType(int iDegree); // needle specification
     void setOpMode(int Mode);  // operating mode
-    void setTouch(int iDegree);  // touch degree 
-    void setLiquidSpeed(int iDegree);  // liquid speed 
+    void setTouch(int iDegree);  // touch degree
+    void setLiquidSpeed(int iDegree);  // liquid speed
+    void replayHaocai(void);  // replay haocai
+    void setManuForwordMode(void);// forword
+    void setManuBackMode(void);// back;
+    void setNormalMode(void);// normal mode;
+
+
 
     void start();
     void stop();
