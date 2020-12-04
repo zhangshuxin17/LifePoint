@@ -1,6 +1,12 @@
 #include "mesodevice.h"
+#include "gpio.h"
 
 
+s_initGpio s_gpio[] = {
+    {"GPIOC",7,1},
+    {"GPIOC",7,2}
+
+};
 
 
 MesoDevice::MesoDevice()
@@ -18,6 +24,9 @@ MesoDevice::MesoDevice()
     mesoDataToDownType_.OnceCmd = 0;
     proccess_num = 0;
     startBreath_slow();
+    gpios_init(s_gpio,sizeof(s_gpio) / sizeof(s_gpio[0]));
+
+    gpio_get_value("GPIOC",7);
 }
 
 void MesoDevice::replayHaocai(void)  // replay haocai

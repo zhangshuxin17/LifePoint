@@ -14,10 +14,10 @@ set(benlib "/home/benzhang/LifePoint/linux/program/")
 include_directories(${benlib}/com ${benlib}/Crc16 ${benlib}/comAnalyze)
 
 
-add_executable(${PROJECT_NAME} main.cpp mesodevice.cpp  breath.cpp ${benlib}/com/com.cpp ${benlib}/Crc16/Crc16.c ${benlib}/comAnalyze/comAnalyze.cpp
+add_executable(${PROJECT_NAME} main.cpp mesodevice.cpp  breath.cpp gpio.cpp ${benlib}/com/com.cpp ${benlib}/Crc16/Crc16.c ${benlib}/comAnalyze/comAnalyze.cpp
     ${benlib}/comAnalyze/frame.c )
 
-add_executable(mesoDown meso_down.cpp mesodevice.cpp breath.cpp ${benlib}/com/com.cpp ${benlib}/Crc16/Crc16.c ${benlib}/comAnalyze/comAnalyze.cpp
+add_executable(mesoDown meso_down.cpp mesodevice.cpp breath.cpp gpio.cpp ${benlib}/com/com.cpp ${benlib}/Crc16/Crc16.c ${benlib}/comAnalyze/comAnalyze.cpp
     ${benlib}/comAnalyze/frame.c )
 
 

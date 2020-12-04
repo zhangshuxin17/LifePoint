@@ -5,6 +5,7 @@
 #include <string.h>
 #include "stdio.h"
 #include "breath.h"
+#include "gpio.h"
 #include <cstring>
 #include <vector>
 
