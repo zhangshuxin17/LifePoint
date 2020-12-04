@@ -4,6 +4,7 @@
 #include "comAnalyze.h"
 #include <string.h>
 #include "stdio.h"
+#include "breath.h"
 #include <cstring>
 #include <vector>
 

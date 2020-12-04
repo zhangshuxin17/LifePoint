@@ -17,6 +17,7 @@ MesoDevice::MesoDevice()
     mesoDataToDownType_.ManuMode = 0;
     mesoDataToDownType_.OnceCmd = 0;
     proccess_num = 0;
+    startBreath_slow();
 }
 
 void MesoDevice::replayHaocai(void)  // replay haocai
@@ -84,6 +85,7 @@ void MesoDevice::start()
     mesoDataToDownType_.ManuMode = 0;
     mesoDataToDownType_.IsStart = 1;
     Analyze_.sendFrame((unsigned char *)&mesoDataToDownType_,sizeof(mesoDataToDownType_));
+    startBreath_fast();
 }
 void MesoDevice::stop()
 {
@@ -91,6 +93,7 @@ void MesoDevice::stop()
     mesoDataToDownType_.OnceCmd = 0;
     mesoDataToDownType_.ManuMode = 0;
     Analyze_.sendFrame((unsigned char *)&mesoDataToDownType_,sizeof(mesoDataToDownType_));
+    startBreath_slow();
 
 }
 
